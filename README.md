@@ -13,6 +13,7 @@ Discover mecanisms of authentification with :
 - password encryption (with `bcrypt` module)
 
 ## Links
-##### Backend repo
+#### Backend repo
 https://github.com/benKapl/morningnews-frontend
 #### Deployed app (vercel)
+https://morningnews-frontend-rho.vercel.app/
