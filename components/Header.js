@@ -14,6 +14,8 @@ function Header() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
 
+	const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
 	const [date, setDate] = useState('2050-11-22T23:59:59');
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [signUpUsername, setSignUpUsername] = useState('');
@@ -26,7 +28,7 @@ function Header() {
 	}, []);
 
 	const handleRegister = () => {
-		fetch('http://localhost:3000/users/signup', {
+		fetch(`${backendUrl}/users/signup`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -43,7 +45,7 @@ function Header() {
 
 	const handleConnection = () => {
 
-		fetch('http://localhost:3000/users/signin', {
+		fetch(`${backendUrl}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: signInUsername, password: signInPassword }),

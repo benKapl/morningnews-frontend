@@ -11,12 +11,14 @@ function Article(props) {
 	const user = useSelector((state) => state.user.value);
 	const hiddenArticles = useSelector((state) => state.hiddenArticles.value)
 
+	const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
 	const handleBookmarkClick = () => {
 		if (!user.token) {
 			return;
 		}
 
-		fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+		fetch(`${backendUrl}/users/canBookmark/${user.token}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result && data.canBookmark) {

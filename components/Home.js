@@ -9,11 +9,13 @@ function Home() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
   const hiddenArticles = useSelector((state) => state.hiddenArticles.value)
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
   const [articlesData, setArticlesData] = useState([]);
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch(`${backendUrl}/articles`)
       .then(response => response.json())
       .then(data => {
         setTopArticle(data.articles[0]);
